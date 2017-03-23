@@ -9,7 +9,13 @@ module.exports = {
 		filename:'bundle.js'
 	},
 	module:{
-		loaders:[]
+		loaders:[
+			{
+				test:/\.less$/,
+				loader:'style-loader!css-loader!less-loader',
+				include: path.resolve(__dirname, 'src')
+			}
+		]
 	},
 	plugins:[
 		new HtmlWebpackPlugin({
