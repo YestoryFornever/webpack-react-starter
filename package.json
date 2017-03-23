@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/YestoryFornever/webpack-react-starter/issues"
   },
-  "homepage": "https://github.com/YestoryFornever/webpack-react-starter#readme"
+  "homepage": "https://github.com/YestoryFornever/webpack-react-starter#readme",
+  "devDependencies": {
+    "webpack": "^2.3.1"
+  }
 }
