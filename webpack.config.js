@@ -6,6 +6,7 @@ const HotModuleReplacementPlugin = webpack.HotModuleReplacementPlugin;
 const ProvidePlugin = webpack.ProvidePlugin;
 
 const node_modules_path = __dirname+'/node_modules/';
+console.log(process.env.NODE_ENV);
 
 module.exports = {
 	entry:{
@@ -52,9 +53,9 @@ module.exports = {
 			inject: 'body',
 			hash: true
 		}),
-		new UglifyJsPlugin({//代码压缩(添加此插件时打包不会生成map文件)
+		/*new UglifyJsPlugin({//代码压缩(添加此插件时打包不会生成map文件)
 			minimize:true
-		}),
+		}),*/
 	],
 	devtool: 'source-map',//生成sourcemap文件,便于调试
 }

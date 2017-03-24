@@ -5,7 +5,6 @@ import $ from 'jquery';
 
 class Hello extends React.Component{
 	render(){
-		// debugger;
 		return <h1>Hello</h1>
 	}
 };
