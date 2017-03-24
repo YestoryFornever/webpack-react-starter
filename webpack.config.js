@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 const HotModuleReplacementPlugin = webpack.HotModuleReplacementPlugin;
+const ProvidePlugin = webpack.ProvidePlugin;
 
 const node_modules_path = __dirname+'/node_modules/';
 
@@ -17,6 +18,10 @@ module.exports = {
 	module:{
 		loaders:[
 			{
+				test: path.join(node_modules_path,'jquery'),
+				loader: 'expose-loader?jQuery!expose-loader?$'
+			},
+			{
 				test: /\.jsx?$/,
 				loader: 'babel-loader',
 				exclude: /node_modules/,//黑名单
@@ -28,7 +33,7 @@ module.exports = {
 				test:/\.less$/,
 				loader:'style-loader!css-loader!less-loader',
 				include: path.resolve(__dirname, 'src')//白名单
-			}
+			},
 		]
 	},
 	resolve:{
@@ -37,6 +42,7 @@ module.exports = {
 			'react':path.join(node_modules_path,'react/dist/react.min'),
 			'react-dom':path.join(node_modules_path,'react-dom'),
 			'react-dom':path.join(node_modules_path,'react-dom/dist/react-dom.min'),
+			'jquery':path.join(node_modules_path,'jquery'),
 		}
 	},
 	plugins:[
