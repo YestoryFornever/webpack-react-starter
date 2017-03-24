@@ -7,14 +7,14 @@ module.exports = {
 	entry:'./src/main.jsx',//入口文件
 	output:{
 		path:path.resolve(__dirname,'dist'),//输出文件目录（__dirname指的是当前目录）
-		filename:'./bundle.js'
+		filename:'./bundle.js'//打包后文件名
 	},
 	module:{
 		loaders:[
 			{
 				test: /\.jsx?$/,
 				loader: 'babel-loader',
-				exclude: /node_modules/,
+				exclude: /node_modules/,//黑名单
 				query: {
 					presets: ['es2015', 'react']
 				}
@@ -22,7 +22,7 @@ module.exports = {
 			{
 				test:/\.less$/,
 				loader:'style-loader!css-loader!less-loader',
-				include: path.resolve(__dirname, 'src')
+				include: path.resolve(__dirname, 'src')//白名单
 			}
 		]
 	},
@@ -33,7 +33,7 @@ module.exports = {
 			inject: 'body',
 			hash: true
 		}),
-		new UglifyJsPlugin({
+		new UglifyJsPlugin({//代码压缩
 			minimize:true
 		}),
 	],
