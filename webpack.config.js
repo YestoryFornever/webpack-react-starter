@@ -2,9 +2,14 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
+const HotModuleReplacementPlugin = webpack.HotModuleReplacementPlugin;
 
 module.exports = {
-	entry:'./src/main.jsx',//入口文件
+	entry:[
+		// 'webpack-dev-server/client?http://localhost:3000',
+		// 'webpack/hot/only-dev-server',
+		'./src/main.jsx'
+	],//入口文件
 	output:{
 		path:path.resolve(__dirname,'dist'),//输出文件目录（__dirname指的是当前目录）
 		filename:'./bundle.js'//打包后文件名
@@ -27,6 +32,7 @@ module.exports = {
 		]
 	},
 	plugins:[
+		// new HotModuleReplacementPlugin(),
 		new HtmlWebpackPlugin({
 			title: 'default-title',
 			template: 'src/index.html',
