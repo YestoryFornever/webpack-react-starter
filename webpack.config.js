@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 
 module.exports = {
 	entry:'./src/main.jsx',//入口文件
@@ -31,6 +32,9 @@ module.exports = {
 			template: 'src/index.html',
 			inject: 'body',
 			hash: true
+		}),
+		new UglifyJsPlugin({
+			minimize:true
 		}),
 	],
 	devtool: 'source-map',//生成sourcemap文件,便于调试
