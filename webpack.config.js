@@ -6,7 +6,7 @@ const HotModuleReplacementPlugin = webpack.HotModuleReplacementPlugin;
 const ProvidePlugin = webpack.ProvidePlugin;
 
 const node_modules_path = __dirname+'/node_modules/';
-console.log(process.env.NODE_ENV);
+// console.log(process.env.NODE_ENV);
 
 module.exports = {
 	entry:{
@@ -23,7 +23,7 @@ module.exports = {
 				loader: 'expose-loader?jQuery!expose-loader?$'
 			},
 			{
-				test: /\.jsx?$/,
+				test: /\.js[x]?$/,
 				loader: 'babel-loader',
 				exclude: /node_modules/,//黑名单
 				query: {
@@ -37,15 +37,6 @@ module.exports = {
 			},
 		]
 	},
-	resolve:{
-		alias:{
-			'react':path.join(node_modules_path,'react/react.js'),
-			'react':path.join(node_modules_path,'react/dist/react.min'),
-			'react-dom':path.join(node_modules_path,'react-dom'),
-			'react-dom':path.join(node_modules_path,'react-dom/dist/react-dom.min'),
-			'jquery':path.join(node_modules_path,'jquery'),
-		}
-	},
 	plugins:[
 		new HtmlWebpackPlugin({
 			title: 'default-title',
@@ -53,9 +44,6 @@ module.exports = {
 			inject: 'body',
 			hash: true
 		}),
-		/*new UglifyJsPlugin({//代码压缩(添加此插件时打包不会生成map文件)
-			minimize:true
-		}),*/
 	],
 	devtool: 'source-map',//生成sourcemap文件,便于调试
 }
