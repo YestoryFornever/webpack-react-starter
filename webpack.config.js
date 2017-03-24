@@ -52,7 +52,7 @@ module.exports = {
 			inject: 'body',
 			hash: true
 		}),
-		new UglifyJsPlugin({//代码压缩
+		new UglifyJsPlugin({//代码压缩(添加此插件时打包不会生成map文件)
 			minimize:true
 		}),
 	],
