@@ -33,4 +33,5 @@ module.exports = {
 			hash: true
 		}),
 	],
+	devtool: 'source-map',//生成sourcemap文件,便于调试
 }
