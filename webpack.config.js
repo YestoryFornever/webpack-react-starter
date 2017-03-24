@@ -4,15 +4,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 const HotModuleReplacementPlugin = webpack.HotModuleReplacementPlugin;
 
+const node_modules_path = __dirname+'/node_modules/';
+
 module.exports = {
-	entry:[
-		// 'webpack-dev-server/client?http://localhost:3000',
-		// 'webpack/hot/only-dev-server',
-		'./src/main.jsx'
-	],//入口文件
+	entry:{
+		bundle:'./src/main.jsx'
+	},//入口文件
 	output:{
 		path:path.resolve(__dirname,'dist'),//输出文件目录（__dirname指的是当前目录）
-		filename:'./bundle.js'//打包后文件名
+		filename:'./[name].js'//打包后文件名对应entry中的key名:e.g. bundle
 	},
 	module:{
 		loaders:[
@@ -31,8 +31,15 @@ module.exports = {
 			}
 		]
 	},
+	resolve:{
+		alias:{
+			'react':path.join(node_modules_path,'react/react.js'),
+			'react':path.join(node_modules_path,'react/dist/react.min'),
+			'react-dom':path.join(node_modules_path,'react-dom'),
+			'react-dom':path.join(node_modules_path,'react-dom/dist/react-dom.min'),
+		}
+	},
 	plugins:[
-		// new HotModuleReplacementPlugin(),
 		new HtmlWebpackPlugin({
 			title: 'default-title',
 			template: 'src/index.html',

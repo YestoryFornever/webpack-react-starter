@@ -4,7 +4,7 @@
   "description": "webpack-react-starter",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --port 3000 --devtool eval --progress --colors --hot --content-base dist",
+    "start": "webpack-dev-server --port 9999 --devtool eval --progress --colors --hot --content-base dist",
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
