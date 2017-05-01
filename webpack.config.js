@@ -12,6 +12,9 @@ module.exports = {
 	entry:{
 		bundle:'./src/main.jsx'
 	},//入口文件
+	resolve: {
+		extensions: ['.js', '.jsx']
+	},
 	output:{
 		path:path.resolve(__dirname,'dist'),//输出文件目录（__dirname指的是当前目录）
 		filename:'./[name].js'//打包后文件名对应entry中的key名:e.g. bundle
@@ -32,8 +35,16 @@ module.exports = {
 			},
 			{
 				test:/\.less$/,
-				loader:'style-loader!css-loader!less-loader',
+				loader:'style-loader!css-loader!autoprefixer-loader?{browsers:["last 2 version"]}!less-loader',
 				include: path.resolve(__dirname, 'src')//白名单
+			},
+			{
+				test:/\.json$/,
+				loader:'json-loader',
+			},
+			{
+				test:/\.(png|jpg|woff|woff2)$/,
+				loader:'url-loader',
 			},
 		]
 	},
