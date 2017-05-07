@@ -17,7 +17,8 @@ module.exports = {
 	},
 	output:{
 		path:path.resolve(__dirname,'dist'),//输出文件目录（__dirname指的是当前目录）
-		filename:'./[name].js'//打包后文件名对应entry中的key名:e.g. bundle
+		filename:'./[name].js',//打包后文件名对应entry中的key名:e.g. bundle
+		publicPath: 'http://localhost:9999/',
 	},
 	module:{
 		loaders:[
@@ -56,5 +57,9 @@ module.exports = {
 			hash: true
 		}),
 	],
-	devtool: 'source-map',//生成sourcemap文件,便于调试
+	devtool: 'cheap-module-eval-source-map',//生成sourcemap文件,便于调试
+	devServer: {
+		historyApiFallback: true,
+		stats: 'minimal'
+	}
 }
